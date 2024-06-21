@@ -1,0 +1,32 @@
+.container {
+  max-width: 900px;
+  min-width: 250px;
+  margin-inline: auto;
+}
+
+.ant-menu {
+  border-bottom: 0;
+  min-width: 500px;
+}
+
+.ant-menu-item {
+  padding-inline: 0 !important;
+  vertical-align: text-top !important;
+  margin-bottom: 8px !important;
+}
+
+.ant-menu-item::after {
+  inset-inline: -4px !important;
+}
+
+.ant-menu-item + .ant-menu-item {
+  padding-left: 32px !important;
+}
+
+.ant-menu-item + .ant-menu-item::after {
+  inset-inline-start: 28px !important;
+}
+
+.ant-menu-title-content {
+  font-size: 1.125rem;
+}
