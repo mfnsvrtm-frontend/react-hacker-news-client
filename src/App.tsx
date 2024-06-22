@@ -2,9 +2,8 @@ import { ThemeProvider, theme } from './theme';
 import { useEffect } from 'react';
 import Header from './components/Header';
 import { Content } from 'antd/es/layout/layout';
-import StoryList from './components/StoryList';
-import { StoryType } from './types';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { Outlet } from 'react-router-dom';
 
 const client = new QueryClient({
   defaultOptions: {
@@ -24,7 +23,7 @@ const App = () => {
       <ThemeProvider>
         <Header />
         <Content>
-          <StoryList storyType={StoryType.New} />
+          <Outlet />
         </Content>
       </ThemeProvider>
     </QueryClientProvider>
