@@ -1,7 +1,18 @@
 import { ThemeProvider, theme } from './theme';
 import { useEffect } from 'react';
 import Header from './components/Header';
-import { Content, Footer } from 'antd/es/layout/layout';
+import { Content } from 'antd/es/layout/layout';
+import StoryList from './components/StoryList';
+import { StoryType } from './types';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const client = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: false,
+    }
+  }
+});
 
 const App = () => {
   useEffect(() => {
@@ -9,12 +20,14 @@ const App = () => {
   }, []);
 
   return (
-    <ThemeProvider>
-      <Header />
-      <Content>
-
-      </Content>
-    </ThemeProvider>
+    <QueryClientProvider client={client}>
+      <ThemeProvider>
+        <Header />
+        <Content>
+          <StoryList storyType={StoryType.New} />
+        </Content>
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 };
 
