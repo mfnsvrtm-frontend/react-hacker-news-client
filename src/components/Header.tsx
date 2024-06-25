@@ -1,5 +1,5 @@
 import { Header as AntdHeader } from 'antd/es/layout/layout';
-import { Menu } from 'antd';
+import { Menu, theme } from 'antd';
 import Container from './Container';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ const Header = (): React.ReactNode => {
   const selected = location.pathname.split('/').at(-1) ?? '';
 
   return (
-    <AntdHeader style={{ position: 'sticky', top: 0 }} >
+    <AntdHeader style={{ position: 'sticky', top: 0, zIndex: 1, borderBottom: `1px solid ${theme.getDesignToken().colorBorderSecondary}` }} >
       <Container style={{ display: 'flex', height: '100%', gap: '32px', justifyContent: 'center' }} >
         <img src="https://news.ycombinator.com//y18.svg" height='100%' style={{ padding: '8px'}}></img>
         <Menu

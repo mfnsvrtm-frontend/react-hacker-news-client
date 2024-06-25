@@ -1,10 +1,10 @@
 import { useQuery } from 'react-query';
-import { StoryType } from '../types';
+import { StoryRoute } from '../types';
 import { fetchStories } from '../api/stories';
 
-export const useQueryStoryIdList = (storyType: StoryType) => {
+export const useQueryStoryIdList = (route: StoryRoute) => {
   return useQuery({
-    queryKey: [storyType],
-    queryFn: fetchStories(storyType)
+    queryKey: [route],
+    queryFn: fetchStories(route)
   });
 }

@@ -1,9 +1,9 @@
-import { ThemeProvider, theme } from './theme';
-import { useEffect } from 'react';
+import { ThemeProvider } from './theme';
 import Header from './components/Header';
 import { Content } from 'antd/es/layout/layout';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Outlet } from 'react-router-dom';
+import Container from './components/Container';
 
 const client = new QueryClient({
   defaultOptions: {
@@ -14,16 +14,14 @@ const client = new QueryClient({
 });
 
 const App = () => {
-  useEffect(() => {
-    document.body.style.backgroundColor = theme.colors.light;
-  }, []);
-
   return (
     <QueryClientProvider client={client}>
       <ThemeProvider>
         <Header />
         <Content>
-          <Outlet />
+          <Container>
+            <Outlet />
+          </Container>
         </Content>
       </ThemeProvider>
     </QueryClientProvider>

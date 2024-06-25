@@ -1,22 +1,22 @@
+import { List } from 'antd';
 import { useQueryStoryIdList } from '../hooks/useQueryStoryIdList';
-import { StoryType } from '../types';
+import { StoryRoute } from '../types';
 import Story from './Story';
 
 interface StoryListProps {
-  storyType: StoryType;
+  route: StoryRoute;
 };
 
-const StoryList = ({ storyType }: StoryListProps): React.ReactNode => {
-  const { data } = useQueryStoryIdList(storyType);
-
-  console.log(data);
+const StoryList = ({ route }: StoryListProps): React.ReactNode => {
+  const { data } = useQueryStoryIdList(route);
 
   return (
-    <ul>
-      {data?.map(id => (
-        <li key={id}><Story id={id} /></li>
-      ))}
-    </ul>
+    <List
+      itemLayout="horizontal"
+      dataSource={data}
+      renderItem={id => <Story id={id} />}
+    />
+
   );
 };
 
