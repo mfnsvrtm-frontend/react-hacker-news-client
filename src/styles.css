@@ -6,7 +6,7 @@
 
 .ant-menu {
   border-bottom: 0;
-  min-width: 500px;
+  min-width: 600px;
 }
 
 .ant-menu-item {
@@ -29,6 +29,14 @@
 
 .ant-menu-title-content {
   font-size: 1.125rem;
+}
+
+.ant-input-affix-wrapper {
+  transform: translateY(-2px);
+}
+
+:is(.ant-menu-item-active, .ant-menu-item-selected).search::after {
+  display: none;
 }
 
 .story {

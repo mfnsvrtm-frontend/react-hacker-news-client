@@ -8,6 +8,7 @@ import 'antd/dist/reset.css';
 import './styles.css'
 import StoryList from './components/StoryList.tsx';
 import { StoryRoute } from './types.ts';
+import StorySearchList from './components/StorySearchList.tsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,6 +20,7 @@ const router = createBrowserRouter(
       <Route path='ask' element={<StoryList route={StoryRoute.Ask} />} />
       <Route path='show' element={<StoryList route={StoryRoute.Show} />} />
       <Route path='job' element={<StoryList route={StoryRoute.Job} />} />
+      <Route path='search' element={<StorySearchList/>} />
     </Route>
   )
 );
