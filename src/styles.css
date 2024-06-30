@@ -52,6 +52,10 @@
   display: inline;
 }
 
+.story-section-2 {
+  flex-wrap: wrap;
+}
+
 .ant-tag {
   margin-right: 0;
 }
@@ -59,7 +63,6 @@
 .story-id {
   font-size: 10px;
   margin-top: 3px;
-  margin-left: -3px;
 }
 
 .story-id-id {
@@ -83,8 +86,4 @@
 .story-comments, .story-score {
   display: flex;
   gap: 4px;
-}
-
-.story-age {
-  margin-left: -4px;
 }

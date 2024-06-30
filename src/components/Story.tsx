@@ -24,8 +24,11 @@ const Story = ({ id }: StoryProps): React.ReactNode => {
         <StoryTag story={story} />
         <span className='story-score'><UpCircleOutlined />{story.score}</span>
         {hasDescendants(story) && story.descendants > 0 && <span className='story-comments'><MessageOutlined />{story.descendants}</span>}
-        <span className="story-by">by {story.by}</span>
-        <span className="story-age">{age(story.time)}</span>
+        <span>
+          <span className="story-by">by {story.by}</span>
+          &nbsp;
+          <span className="story-age">{age(story.time)}</span>
+        </span>
         <span className='story-id'><span className='story-id-id'>ID</span> {story.id}</span>
       </div>
     </List.Item>
