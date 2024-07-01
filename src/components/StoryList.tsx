@@ -15,6 +15,11 @@ const StoryList = ({ ids, isLoading }: StoryListProps): React.ReactNode => {
       itemLayout="horizontal"
       dataSource={ids}
       renderItem={id => <Story id={id} />}
+      pagination={{
+        defaultPageSize: 10,
+        hideOnSinglePage: true,
+        align: 'center'
+      }}
     />
   );
 };
