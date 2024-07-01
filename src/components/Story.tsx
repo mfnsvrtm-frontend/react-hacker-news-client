@@ -18,7 +18,7 @@ const Story = ({ id }: StoryProps): React.ReactNode => {
     <List.Item className='story'>
       <div className='story-section-1'>
         <h3 className='story-title'>{story.title}</h3>
-        {hasUrl(story) && <a className='story-url' href={story.url}>{new URL(story.url).hostname}</a>}
+        {hasUrl(story) && story.url && <a className='story-url' href={story.url}>{new URL(story.url).hostname}</a>}
       </div>
       <div className='story-section-2'>
         <StoryTag story={story} />
