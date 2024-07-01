@@ -49,6 +49,7 @@ export interface JobStory extends StoryBase {
 
 export interface ApiSearchResult {
   hits: { objectID: string }[];
+  nbHits: number;
 }
 
 export const mapStory = ({
@@ -107,6 +108,9 @@ export const hasDescendants = (story: Story): story is ShowStory | AskStory => {
   return [StoryKind.Show, StoryKind.Ask].includes(story.kind);
 }
 
-export const mapSearchResults = (results: ApiSearchResult): number[] => {
-  return results.hits.map(({ objectID }) => parseInt(objectID));
+export const mapSearchResults = (results: ApiSearchResult) => {
+  return {
+    results: results.hits.map(({ objectID }) => parseInt(objectID)),
+    resultCount: results.nbHits
+  }
 }
