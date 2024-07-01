@@ -6,7 +6,7 @@ import { Navigate, Route, RouterProvider, createBrowserRouter, createRoutesFromE
 
 import 'antd/dist/reset.css';
 import './styles.css'
-import StoryList from './components/StoryList.tsx';
+import StoryRouteList from './components/StoryRouteList.tsx';
 import { StoryRoute } from './types.ts';
 import StorySearchList from './components/StorySearchList.tsx';
 
@@ -14,12 +14,12 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
       <Route index element={<Navigate to='new' />} />
-      <Route path='new' element={<StoryList route={StoryRoute.New} />} />
-      <Route path='top' element={<StoryList route={StoryRoute.Top} />} />
-      <Route path='best' element={<StoryList route={StoryRoute.Best} />} />
-      <Route path='ask' element={<StoryList route={StoryRoute.Ask} />} />
-      <Route path='show' element={<StoryList route={StoryRoute.Show} />} />
-      <Route path='job' element={<StoryList route={StoryRoute.Job} />} />
+      <Route path='new' element={<StoryRouteList route={StoryRoute.New} />} />
+      <Route path='top' element={<StoryRouteList route={StoryRoute.Top} />} />
+      <Route path='best' element={<StoryRouteList route={StoryRoute.Best} />} />
+      <Route path='ask' element={<StoryRouteList route={StoryRoute.Ask} />} />
+      <Route path='show' element={<StoryRouteList route={StoryRoute.Show} />} />
+      <Route path='job' element={<StoryRouteList route={StoryRoute.Job} />} />
       <Route path='search' element={<StorySearchList/>} />
     </Route>
   )

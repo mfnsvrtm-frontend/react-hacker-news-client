@@ -1,22 +1,21 @@
-import { List } from 'antd';
-import { useQueryStoryIdList } from '../hooks/useQueryStoryIdList';
-import { StoryRoute } from '../types';
+import { List, Spin } from 'antd';
 import Story from './Story';
 
 interface StoryListProps {
-  route: StoryRoute;
+  ids?: number[];
+  isLoading: boolean;
 };
 
-const StoryList = ({ route }: StoryListProps): React.ReactNode => {
-  const { data } = useQueryStoryIdList(route);
+const StoryList = ({ ids, isLoading }: StoryListProps): React.ReactNode => {
+  if (isLoading)
+    return <Spin size="large" />
 
   return (
     <List
       itemLayout="horizontal"
-      dataSource={data}
+      dataSource={ids}
       renderItem={id => <Story id={id} />}
     />
-
   );
 };
 

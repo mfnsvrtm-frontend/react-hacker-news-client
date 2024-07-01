@@ -24,7 +24,7 @@ const App = () => {
     <QueryClientProvider client={client}>
       <ThemeProvider>
         <Header searchState={searchState} />
-        <Content>
+        <Content style={{ flexGrow: 1 }}>
           <Container>
             <Outlet context={debounced} />
           </Container>
