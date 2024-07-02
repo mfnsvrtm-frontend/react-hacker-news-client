@@ -17,8 +17,6 @@ const StoryList = ({ ids, isLoading, pagination }: StoryListProps): React.ReactN
   if (isLoading)
     return <Spin size="large" />;
 
-  console.log(pagination?.resultCount);
-
   const handleChange = pagination
     ? (page: number, pageSize: number) => {
       pagination.setPageNumber(page);
