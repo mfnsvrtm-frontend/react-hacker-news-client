@@ -8,14 +8,14 @@ const StorySearchList = (): React.ReactNode => {
   const [pageNumber, setPageNumber] = useState(1);
 
   const search = useOutletContext() as string;
-  const { data, isLoading } = useSearchStory(search, pageSize, pageNumber);
+  const { data, isLoading } = useSearchStory(search, pageSize, pageNumber - 1);
 
   const pagination = {
     pageSize,
     setPageSize,
     pageNumber,
     setPageNumber,
-    resultCount: data?.resultCount ?? 0,
+    resultCount: Math.min(1000, data?.resultCount ?? 0),
   }
 
   return <StoryList ids={data?.results} isLoading={isLoading} pagination={pagination} />

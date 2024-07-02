@@ -38,7 +38,8 @@ const StoryList = ({ ids, isLoading, pagination }: StoryListProps): React.ReactN
         align: 'center',
         ...(pagination && { 
           total: pagination.resultCount,
-          current: pagination.pageNumber
+          current: pagination.pageNumber,
+          pageSize: pagination.pageSize
         })
       }}
     />

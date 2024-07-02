@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 
-import { Navigate, Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+import { Navigate, Route, RouterProvider, createMemoryRouter, createRoutesFromElements } from 'react-router-dom';
 
 import 'antd/dist/reset.css';
 import './styles.css'
@@ -10,7 +10,7 @@ import StoryRouteList from './components/StoryRouteList.tsx';
 import { StoryRoute } from './types.ts';
 import StorySearchList from './components/StorySearchList.tsx';
 
-const router = createBrowserRouter(
+const router = createMemoryRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
       <Route index element={<Navigate to='new' />} />
