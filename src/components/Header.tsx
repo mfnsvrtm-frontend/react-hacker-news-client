@@ -4,6 +4,7 @@ import Container from './Container';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { MenuOutlined, SearchOutlined } from '@ant-design/icons';
 import { useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 const labels = ['New', 'Top', 'Best', 'Ask', 'Show', 'Job'];
 const items = labels.map(label => ({ label, key: label.toLowerCase() }));
@@ -14,30 +15,35 @@ interface HeaderProps {
 
 const Header = ({ searchState }: HeaderProps): React.ReactNode => {
   const [isOpen, setIsOpen] = useState(false);
+  const isDesktop = useMediaQuery({ query: '(min-width: 685px)' });
 
   return (
     <AntdHeader style={{ position: 'sticky', top: 0, zIndex: 1, borderBottom: `1px solid ${theme.getDesignToken().colorBorderSecondary}` }} >
-      <Container className='desktop-header-content' style={{ display: 'flex', height: '100%', gap: '32px', justifyContent: 'safe center' }} >
-        <img src="https://news.ycombinator.com//y18.svg" height='100%' style={{ padding: '8px' }}></img>
-        <MainMenu searchState={searchState} vertical={false} />
-      </Container>
-      <div className='mobile-header-content'>
-        <img src="https://news.ycombinator.com//y18.svg" height='100%' style={{ padding: '8px' }}></img>
-        <Button
-          type='text'
-          size='large'
-          icon={<MenuOutlined />}
-          onClick={() => setIsOpen(true)}
-        />
-        <Drawer
-          size='large'
-          placement='top'
-          open={isOpen}
-          onClose={() => setIsOpen(false)}
-        >
-          <MainMenu searchState={searchState} vertical={true} onSelect={() => setIsOpen(false)} />
-        </Drawer>
-      </div>
+      {isDesktop && (
+        <Container style={{ display: 'flex', height: '100%', gap: '32px', justifyContent: 'safe center' }} >
+          <img src="https://news.ycombinator.com//y18.svg" height='100%' style={{ padding: '8px' }}></img>
+          <MainMenu searchState={searchState} vertical={false} />
+        </Container>
+      )}
+      {!isDesktop && (
+        <div className='mobile-header-content'>
+          <img src="https://news.ycombinator.com//y18.svg" height='100%' style={{ padding: '8px' }}></img>
+          <Button
+            type='text'
+            size='large'
+            icon={<MenuOutlined />}
+            onClick={() => setIsOpen(true)}
+          />
+          <Drawer
+            size='large'
+            placement='top'
+            open={isOpen}
+            onClose={() => setIsOpen(false)}
+          >
+            <MainMenu searchState={searchState} vertical={true} onSelect={() => setIsOpen(false)} />
+          </Drawer>
+        </div>
+      )}
     </AntdHeader>
   );
 };

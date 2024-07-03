@@ -10,10 +10,6 @@
   margin-inline: auto;
 }
 
-.desktop-header-content {
-  display: none !important;
-}
-
 .ant-layout-header {
   display: flex;
   padding-right: 15px;
@@ -119,14 +115,6 @@
 }
 
 @media (min-width: 685px) {
-  .desktop-header-content {
-    display: flex !important;
-  }
-
-  .mobile-header-content {
-    display: none;
-  }
-
   .ant-layout-header {
     padding-inline: 0;
   }
