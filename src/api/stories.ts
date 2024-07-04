@@ -14,6 +14,10 @@ export const fetchStory = (id: number) => {
   return () => get<GenericStory>(`item/${id}`).then(mapStory);
 };
 
+export const fetchComment = (id: number) => {
+  return () => get<Comment>(`item/${id}`);
+}
+
 const get = <T>(url: string) => {
   return instance.get<T>(`${url}.json`).then(response => response.data);
 };

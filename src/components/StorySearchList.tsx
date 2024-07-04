@@ -2,12 +2,13 @@ import { useOutletContext } from 'react-router-dom';
 import { useSearchStory } from '../hooks/useSearchStory';
 import StoryList from './StoryList';
 import { useState } from 'react';
+import { OutletContextType } from '../types';
 
 const StorySearchList = (): React.ReactNode => {
   const [pageSize, setPageSize] = useState(10);
   const [pageNumber, setPageNumber] = useState(1);
 
-  const search = useOutletContext() as string;
+  const { search } = useOutletContext<OutletContextType>();
   const { data, isLoading } = useSearchStory(search, pageSize, pageNumber - 1);
 
   const pagination = {

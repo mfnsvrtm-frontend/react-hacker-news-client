@@ -6,3 +6,8 @@ export const enum StoryRoute {
   Show = 'showstories',
   Job = 'jobstories'
 }
+
+export interface OutletContextType {
+  search: string;
+  setSelectedStory: React.Dispatch<React.SetStateAction<number | null>>;
+}

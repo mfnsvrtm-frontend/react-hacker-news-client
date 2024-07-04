@@ -47,6 +47,15 @@ export interface JobStory extends StoryBase {
   url: string;
 }
 
+export interface Comment {
+  id: number;
+  by: string;
+  kids: number[];
+  parent: number;
+  text: string;
+  time: number;
+}
+
 export interface ApiSearchResult {
   hits: { objectID: string }[];
   nbHits: number;

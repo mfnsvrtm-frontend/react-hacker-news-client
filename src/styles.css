@@ -55,6 +55,7 @@
 
 .story-title {
   display: inline;
+  cursor: pointer;
 }
 
 .story-section-2 {
@@ -103,6 +104,10 @@
     place-content: center;
     inset: 0;
   }
+
+  .ant-drawer-content-wrapper {
+    height: 90% !important;
+  }
 }
 
 @media (max-width: 685px) {
@@ -147,5 +152,9 @@
 
   :is(.ant-menu-item-active, .ant-menu-item-selected).search::after {
     display: none;
+  }
+
+  .ant-drawer-content-wrapper {
+    width: 90% !important;
   }
 }

@@ -4,20 +4,23 @@ import { MessageOutlined, UpCircleOutlined } from '@ant-design/icons';
 import { age } from '../utils';
 import { hasDescendants, hasUrl } from '../api';
 import StoryTag from './StoryTag';
+import { OutletContextType } from '../types';
+import { useOutletContext } from 'react-router-dom';
 
 interface StoryProps {
   id: number;
 };
 
 const Story = ({ id }: StoryProps): React.ReactNode => {
+  const { setSelectedStory } = useOutletContext<OutletContextType>();
   const { data: story } = useQueryStory(id);
-
+  
   if (!story) return null;
 
   return (
     <List.Item className='story'>
       <div className='story-section-1'>
-        <h3 className='story-title'>{story.title}</h3>
+        <h3 className='story-title' onClick={() => setSelectedStory(id)} >{story.title}</h3>
         {hasUrl(story) && story.url && <a className='story-url' href={story.url}>{new URL(story.url).hostname}</a>}
       </div>
       <div className='story-section-2'>
