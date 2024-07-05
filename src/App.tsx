@@ -7,6 +7,7 @@ import Container from './components/Container';
 import { useState } from 'react';
 import { useDebounce } from 'use-debounce';
 import CommentSection from './components/CommentSection';
+import { useMediaQuery } from 'react-responsive';
 
 const client = new QueryClient({
   defaultOptions: {
@@ -21,6 +22,7 @@ const App = () => {
   const [search] = searchState;
   const [debounced] = useDebounce(search, 300);
   const [selectedStory, setSelectedStory] = useState<number | null>(null);
+  const isDesktop = useMediaQuery({query: '(min-width: 685px)'});
 
   return (
     <QueryClientProvider client={client}>
@@ -31,7 +33,7 @@ const App = () => {
             <Outlet context={{ search: debounced, setSelectedStory }} />
           </Container>
         </Content>
-        <CommentSection desktop={true} storyId={selectedStory} close={() => { console.log('closing'); setSelectedStory(null) }} />
+        <CommentSection desktop={isDesktop} storyId={selectedStory} close={() => setSelectedStory(null)} />
       </ThemeProvider>
     </QueryClientProvider>
   );
