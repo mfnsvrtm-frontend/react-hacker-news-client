@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { StoryRoute } from '../types';
-import { ApiSearchResult, GenericStory, mapSearchResults, mapStory } from '.';
+import { ApiSearchResult, GenericStory, Comment, mapSearchResults, mapStory } from '.';
 
 const instance = axios.create({
   baseURL: 'https://hacker-news.firebaseio.com/v0/'

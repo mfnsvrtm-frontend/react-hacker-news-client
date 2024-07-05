@@ -19,6 +19,8 @@ const CommentSectionMain = ({ desktop, storyId, close }: CommentSectionMainProps
 
   return (
     <Drawer
+      className='comment-section'
+      title={`Comments for “${story.title}”`}
       placement={desktop ? 'right' : 'bottom'}
       size='large'
       open={true}

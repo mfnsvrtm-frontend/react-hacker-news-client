@@ -14,7 +14,7 @@ interface StoryProps {
 const Story = ({ id }: StoryProps): React.ReactNode => {
   const { setSelectedStory } = useOutletContext<OutletContextType>();
   const { data: story } = useQueryStory(id);
-  
+
   if (!story) return null;
 
   return (
@@ -28,11 +28,11 @@ const Story = ({ id }: StoryProps): React.ReactNode => {
         <span className='story-score'><UpCircleOutlined />{story.score}</span>
         {hasDescendants(story) && story.descendants > 0 && <span className='story-comments'><MessageOutlined />{story.descendants}</span>}
         <span>
-          <span className="story-by">by {story.by}</span>
+          <span className="item-by">by {story.by}</span>
           &nbsp;
-          <span className="story-age">{age(story.time)}</span>
+          <span className="item-age">{age(story.time)}</span>
         </span>
-        <span className='story-id'><span className='story-id-id'>ID</span> {story.id}</span>
+        <span className='item-id'><span className='item-id-label'>ID</span> {story.id}</span>
       </div>
     </List.Item>
   );
