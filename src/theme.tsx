@@ -1,5 +1,8 @@
 import { ConfigProvider } from 'antd';
 
+import '@fontsource/bebas-neue';
+import '@fontsource-variable/rubik';
+
 export const theme = {
   colors: {
     primary: 'rgb(251, 101, 30)',

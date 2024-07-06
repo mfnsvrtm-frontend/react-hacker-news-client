@@ -19,18 +19,17 @@ const Story = ({ id }: StoryProps): React.ReactNode => {
 
   return (
     <List.Item className='story'>
-      <div className='story-section-1'>
-        <h3 className='story-title' onClick={() => setSelectedStory(id)} >{story.title}</h3>
-        {hasUrl(story) && story.url && <a className='story-url' href={story.url}>{new URL(story.url).hostname}</a>}
-      </div>
-      <div className='story-section-2'>
+      <h3 className='story-title' onClick={() => setSelectedStory(id)} >{story.title}</h3>
+      <div className='story-info'>
         <StoryTag story={story} />
         <span className='story-score'><UpCircleOutlined />{story.score}</span>
         {hasDescendants(story) && story.descendants > 0 && <span className='story-comments'><MessageOutlined />{story.descendants}</span>}
         <span>
-          <span className="item-by">by {story.by}</span>
+          <span className="item-by">by <span className='item-by-author'>{story.by}</span></span>
           &nbsp;
           <span className="item-age">{age(story.time)}</span>
+          &nbsp;
+          {hasUrl(story) && story.url && <span className='story-url'>at <a className='story-url-link' href={story.url}>{new URL(story.url).hostname}</a></span>}
         </span>
         <span className='item-id'><span className='item-id-label'>ID</span> {story.id}</span>
       </div>

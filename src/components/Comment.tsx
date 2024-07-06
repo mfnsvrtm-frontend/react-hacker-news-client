@@ -16,21 +16,25 @@ const Comment = ({ id }: CommentProps): React.ReactNode => {
 
   return (
     <div className='comment-wrapper'>
-      <Card className='comment'>
-        <div className='comment-header'>
-          <span className='item-by'>by {data.by}</span>
-          &nbsp;
-          <span className='item-age'>{age(data.time)}</span>
-          &nbsp;
-          <span className='item-id'><span className='item-id-label'>ID</span> {data.id}</span>
-        </div>
+      <Card
+        title={(
+          <div className='comment-header'>
+            <span className="item-by">by <span className='item-by-author'>{data.by}</span></span>
+            &nbsp;
+            <span className='item-age'>{age(data.time)}</span>
+            &nbsp;
+            <span className='item-id'><span className='item-id-label'>ID</span> {data.id}</span>
+          </div>
+        )}
+        className='comment'
+      >
         <div className='comment-body' dangerouslySetInnerHTML={{ __html: data.text }}></div>
         {data.kids && <div className='comment-show-replies' onClick={() => setShowChildren(!showChildren)}>
           {showChildren ? (
             <><UpOutlined /> hide replies</>
           ) : (
             <><DownOutlined /> show replies</>
-        )}
+          )}
         </div>}
       </Card>
       {showChildren && data.kids && (

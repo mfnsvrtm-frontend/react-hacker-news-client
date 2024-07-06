@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.3.7",
+    "@fontsource-variable/rubik": "^5.0.22",
+    "@fontsource/bebas-neue": "^5.0.20",
     "antd": "^5.18.3",
     "axios": "^1.7.2",
     "javascript-time-ago": "^2.5.10",
