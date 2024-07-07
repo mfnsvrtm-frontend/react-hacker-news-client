@@ -1,5 +1,5 @@
 import { Header as AntdHeader } from 'antd/es/layout/layout';
-import { Button, Drawer, Input, Menu, theme } from 'antd';
+import { Button, Drawer, Input, Menu } from 'antd';
 import Container from './Container';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { MenuOutlined, SearchOutlined } from '@ant-design/icons';
@@ -18,16 +18,16 @@ const Header = ({ searchState }: HeaderProps): React.ReactNode => {
   const isDesktop = useMediaQuery({ query: '(min-width: 685px)' });
 
   return (
-    <AntdHeader style={{ position: 'sticky', top: 0, zIndex: 1, borderBottom: `1px solid ${theme.getDesignToken().colorBorderSecondary}` }} >
+    <AntdHeader>
       {isDesktop && (
-        <Container style={{ display: 'flex', height: '100%', gap: '32px', justifyContent: 'safe center' }} >
-          <img src="https://news.ycombinator.com//y18.svg" height='100%' style={{ padding: '8px' }}></img>
+        <Container className='desktop-header-content'>
+          <img src="https://news.ycombinator.com//y18.svg" className='logo'></img>
           <MainMenu searchState={searchState} vertical={false} />
         </Container>
       )}
       {!isDesktop && (
         <div className='mobile-header-content'>
-          <img src="https://news.ycombinator.com//y18.svg" height='100%' style={{ padding: '8px' }}></img>
+          <img src="https://news.ycombinator.com//y18.svg" className='logo'></img>
           <Button
             type='text'
             size='large'
@@ -78,8 +78,8 @@ const MainMenu = ({ searchState, vertical, onSelect }: MenuProps) => {
       >
         <Input
           placeholder="Search"
+          className='header-search'
           prefix={<SearchOutlined />}
-          style={{ width: '175px' }}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           onKeyDown={(e) => { if (e.code === 'Enter') onSelect(); }}
