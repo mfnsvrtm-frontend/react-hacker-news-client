@@ -65,6 +65,7 @@ h6 {
 
 .header-search {
   width: 175px;
+  transform: translateY(-5px) !important;
 }
 
 .logo {
