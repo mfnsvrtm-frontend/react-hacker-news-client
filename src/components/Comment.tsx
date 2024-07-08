@@ -1,8 +1,10 @@
 import { Card } from 'antd';
 import { useQueryComment } from '../hooks/useQueryComment';
-import { age } from '../utils';
 import { useState } from 'react';
 import { DownOutlined, UpOutlined } from '@ant-design/icons';
+import ItemBy from './ItemBy';
+import ItemAge from './ItemAge';
+import ItemId from './ItemId';
 
 interface CommentProps {
   id: number;
@@ -17,16 +19,16 @@ const Comment = ({ id }: CommentProps): React.ReactNode => {
   return (
     <div className='comment-wrapper'>
       <Card
+        className='comment'
         title={(
           <div className='comment-header'>
-            <span className="item-by">by <span className='item-by-author'>{data.by}</span></span>
+            <ItemBy author={data.by} />
             &nbsp;
-            <span className='item-age'>{age(data.time)}</span>
+            <ItemAge timestamp={data.time} />
             &nbsp;
-            <span className='item-id'><span className='item-id-label'>ID</span> {data.id}</span>
+            <ItemId id={data.id} />
           </div>
         )}
-        className='comment'
       >
         <div className='comment-body' dangerouslySetInnerHTML={{ __html: data.text }}></div>
         {data.kids && <div className='comment-show-replies' onClick={() => setShowChildren(!showChildren)}>

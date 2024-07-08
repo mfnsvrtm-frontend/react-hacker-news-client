@@ -1,11 +1,14 @@
 import { List } from 'antd';
 import { useQueryStory } from '../hooks/useQueryStory';
 import { MessageOutlined, UpCircleOutlined } from '@ant-design/icons';
-import { age } from '../utils';
 import { hasDescendants, hasUrl } from '../api';
 import StoryTag from './StoryTag';
 import { OutletContextType } from '../types';
 import { useOutletContext } from 'react-router-dom';
+import ItemBy from './ItemBy';
+import ItemAge from './ItemAge';
+import ItemId from './ItemId';
+import StoryUrl from './StoryUrl';
 
 interface StoryProps {
   id: number;
@@ -19,19 +22,20 @@ const Story = ({ id }: StoryProps): React.ReactNode => {
 
   return (
     <List.Item className='story'>
-      <h3 className='story-title' onClick={() => setSelectedStory(id)} >{story.title}</h3>
+      <h3 className='story-title' onClick={() => setSelectedStory(id)}>{story.title}</h3>
       <div className='story-info'>
         <StoryTag story={story} />
         <span className='story-score'><UpCircleOutlined />{story.score}</span>
-        {hasDescendants(story) && story.descendants > 0 && <span className='story-comments'><MessageOutlined />{story.descendants}</span>}
+        {hasDescendants(story) && story.descendants > 0 &&
+          <span className='story-comments'><MessageOutlined />{story.descendants}</span>}
         <span>
-          <span className="item-by">by <span className='item-by-author'>{story.by}</span></span>
+          <ItemBy author={story.by} />
           &nbsp;
-          <span className="item-age">{age(story.time)}</span>
+          <ItemAge timestamp={story.time} />
           &nbsp;
-          {hasUrl(story) && story.url && <span className='story-url'>at <a className='story-url-link' href={story.url}>{new URL(story.url).hostname}</a></span>}
+          {hasUrl(story) && story.url && <StoryUrl url={story.url} />}
         </span>
-        <span className='item-id'><span className='item-id-label'>ID</span> {story.id}</span>
+        <ItemId id={story.id} />
       </div>
     </List.Item>
   );
